@@ -6,21 +6,51 @@ export class EducationInfo extends Component {
   }
 
   render() {
-    const { defineFirstName, defineLastName, defineEmail, definePhone } =
-      this.props;
+    const {
+      defineSchoolName,
+      defineSchoolCity,
+      defineSubject,
+      defineSchoolFrom,
+      defineSchoolTo,
+    } = this.props;
     return (
       <fieldset>
         <legend>Education</legend>
-        <label htmlFor="school">School Name:</label>
-        <input type="text" id="school" />
+        <label htmlFor="school">University Name:</label>
+        <input
+          type="text"
+          id="school"
+          onChange={defineSchoolName}
+          placeholder="University name"
+        />
         <label htmlFor="university-city">City</label>
-        <input type="text" id="university-city" />
+        <input
+          type="text"
+          id="university-city"
+          onChange={defineSchoolCity}
+          placeholder="City"
+        />
         <label htmlFor="subject">Subject:</label>
-        <input type="text" id="subject" />
+        <input
+          type="text"
+          id="subject"
+          onChange={defineSubject}
+          placeholder="Subject"
+        />
         <label htmlFor="date-from">From</label>
-        <input type="text" id="date-from" />
+        <input
+          type="text"
+          id="date-from"
+          placeholder="Year"
+          onChange={defineSchoolFrom}
+        />
         <label htmlFor="date-to">To:</label>
-        <input type="text" id="date-to" />
+        <input
+          type="text"
+          id="date-to"
+          placeholder="Year"
+          onChange={defineSchoolTo}
+        />
       </fieldset>
     );
   }

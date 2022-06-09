@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { ProfileInfo } from "./ProfileInfo";
 import { EducationInfo } from "./EducationInfo";
+import { WorkInfo } from "./WorkInfo";
 
 export class CVForm extends Component {
   constructor() {
@@ -15,7 +16,7 @@ export class CVForm extends Component {
       schoolCity: "",
       subject: "",
       schoolFrom: "",
-      schooleTo: "",
+      schoolTo: "",
       workPosition: "",
       workCompany: "",
       workCity: "",
@@ -27,6 +28,16 @@ export class CVForm extends Component {
     this.defineLastName = this.defineLastName.bind(this);
     this.defineEmail = this.defineEmail.bind(this);
     this.definePhone = this.definePhone.bind(this);
+    this.defineSchoolName = this.defineSchoolName.bind(this);
+    this.defineSchoolCity = this.defineSchoolCity.bind(this);
+    this.defineSubject = this.defineSubject.bind(this);
+    this.defineSchoolFrom = this.defineSchoolFrom.bind(this);
+    this.defineSchoolTo = this.defineSchoolTo.bind(this);
+    this.defineWorkPosition = this.defineWorkPosition.bind(this);
+    this.defineWorkCompany = this.defineWorkCompany.bind(this);
+    this.defineWorkCity = this.defineWorkCity.bind(this);
+    this.defineWorkFrom = this.defineWorkFrom.bind(this);
+    this.defineWorkTo = this.defineWorkTo.bind(this);
   }
 
   defineFirstName(e) {
@@ -50,6 +61,57 @@ export class CVForm extends Component {
     });
   }
 
+  defineSchoolName(e) {
+    this.setState({
+      schoolName: e.target.value,
+    });
+  }
+  defineSchoolCity(e) {
+    this.setState({
+      schoolCity: e.target.value,
+    });
+  }
+  defineSubject(e) {
+    this.setState({
+      subject: e.target.value,
+    });
+  }
+  defineSchoolFrom(e) {
+    this.setState({
+      schoolFrom: e.target.value,
+    });
+  }
+  defineSchoolTo(e) {
+    this.setState({
+      schoolTo: e.target.value,
+    });
+  }
+  defineWorkPosition(e) {
+    this.setState({
+      workPosition: e.target.value,
+    });
+  }
+  defineWorkCompany(e) {
+    this.setState({
+      workCompany: e.target.value,
+    });
+  }
+  defineWorkCity(e) {
+    this.setState({
+      workCity: e.target.value,
+    });
+  }
+  defineWorkFrom(e) {
+    this.setState({
+      workFrom: e.target.value,
+    });
+  }
+  defineWorkTo(e) {
+    this.setState({
+      workTo: e.target.value,
+    });
+  }
+
   render() {
     return (
       <form>
@@ -59,25 +121,24 @@ export class CVForm extends Component {
           defineEmail={this.defineEmail}
           definePhone={this.definePhone}
         />
-        <EducationInfo />
-        <fieldset>
-          <legend>Work Expirience</legend>
-          <label htmlFor="position">Position:</label>
-          <input type="text" id="position" />
-          <label htmlFor="company">Company:</label>
-          <input type="text" id="company" />
-          <label htmlFor="city">City:</label>
-          <input type="text" id="city" />
-          <label htmlFor="work-from">From:</label>
-          <input type="text" id="work-from" />
-          <label htmlFor="work-to">To:</label>
-          <input type="text" id="work-to" />
-        </fieldset>
+        <EducationInfo
+          defineSchoolName={this.defineSchoolName}
+          defineSchoolCity={this.defineSchoolCity}
+          defineSubject={this.defineSubject}
+          defineSchoolFrom={this.defineSchoolFrom}
+          defineSchoolTo={this.defineSchoolTo}
+        />
+        <WorkInfo
+          defineWorkPosition={this.defineWorkPosition}
+          defineWorkCompany={this.defineWorkCompany}
+          defineWorkCity={this.defineWorkCity}
+          defineWorkFrom={this.defineWorkFrom}
+          defineWorkTo={this.defineWorkTo}
+        />
         <div className="button-div">
           <button type="submit">Create</button>
           <button>Reset</button>
         </div>
-        {console.log(this.state.lastName)}
       </form>
     );
   }

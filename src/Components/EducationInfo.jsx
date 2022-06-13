@@ -12,6 +12,14 @@ export class EducationInfo extends Component {
       defineSubject,
       defineSchoolFrom,
       defineSchoolTo,
+      addEducationExperience,
+      educationList,
+      removeEducationExperience,
+      schoolName,
+      schoolCity,
+      subject,
+      schoolFrom,
+      schoolTo,
     } = this.props;
     return (
       <fieldset>
@@ -22,6 +30,7 @@ export class EducationInfo extends Component {
           id="school"
           onChange={defineSchoolName}
           placeholder="University name"
+          value={schoolName}
         />
         <label htmlFor="university-city">City</label>
         <input
@@ -29,6 +38,7 @@ export class EducationInfo extends Component {
           id="university-city"
           onChange={defineSchoolCity}
           placeholder="City"
+          value={schoolCity}
         />
         <label htmlFor="subject">Subject:</label>
         <input
@@ -36,6 +46,7 @@ export class EducationInfo extends Component {
           id="subject"
           onChange={defineSubject}
           placeholder="Subject"
+          value={subject}
         />
         <label htmlFor="date-from">From</label>
         <input
@@ -43,6 +54,7 @@ export class EducationInfo extends Component {
           id="date-from"
           placeholder="Year"
           onChange={defineSchoolFrom}
+          value={schoolFrom}
         />
         <label htmlFor="date-to">To:</label>
         <input
@@ -50,7 +62,30 @@ export class EducationInfo extends Component {
           id="date-to"
           placeholder="Year"
           onChange={defineSchoolTo}
+          value={schoolTo}
         />
+        <input type="button" value="add" onClick={addEducationExperience} />
+        <div className="education-list">
+          {educationList.length > 0
+            ? educationList.map((education) => {
+                return (
+                  <div className="education" key={education.id}>
+                    <span>Name: {`${education.name}`}</span>
+                    <span>Subject: {`${education.subject}`}</span>
+                    <span>City: {`${education.city}`}</span>
+                    <span>From: {`${education.from}`}</span>
+                    <span>To: {`${education.to}`}</span>
+                    <button
+                      type="button"
+                      onClick={() => removeEducationExperience(education.id)}
+                    >
+                      remove
+                    </button>
+                  </div>
+                );
+              })
+            : ""}
+        </div>
       </fieldset>
     );
   }

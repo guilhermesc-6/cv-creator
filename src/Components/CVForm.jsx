@@ -24,6 +24,7 @@ export class CVForm extends Component {
       workFrom: "",
       workTo: "",
       workExperiences: [],
+      educationList: [],
     };
 
     this.defineFirstName = this.defineFirstName.bind(this);
@@ -42,6 +43,8 @@ export class CVForm extends Component {
     this.defineWorkTo = this.defineWorkTo.bind(this);
     this.addWorkExperience = this.addWorkExperience.bind(this);
     this.removeWorkExperience = this.removeWorkExperience.bind(this);
+    this.addEducationExperience = this.addEducationExperience.bind(this);
+    this.removeEducationExperience = this.removeEducationExperience.bind(this);
   }
 
   defineFirstName(e) {
@@ -145,6 +148,35 @@ export class CVForm extends Component {
     });
   }
 
+  //add a new object of education information in the educationList array
+  addEducationExperience() {
+    this.setState({
+      educationList: this.state.educationList.concat({
+        id: uuid(),
+        name: this.state.schoolName,
+        city: this.state.schoolCity,
+        subject: this.state.subject,
+        from: this.state.schoolFrom,
+        to: this.state.schoolTo,
+      }),
+    });
+    this.setState({
+      schoolName: "",
+      schoolCity: "",
+      subject: "",
+      schoolFrom: "",
+      schoolTo: "",
+    });
+  }
+
+  //remove the object of educetion information in the educationList array
+  removeEducationExperience(id) {
+    const result = this.state.educationList.filter((edu) => edu.id !== id);
+    this.setState({
+      educationList: result,
+    });
+  }
+
   render() {
     return (
       <form>
@@ -160,6 +192,14 @@ export class CVForm extends Component {
           defineSubject={this.defineSubject}
           defineSchoolFrom={this.defineSchoolFrom}
           defineSchoolTo={this.defineSchoolTo}
+          addEducationExperience={this.addEducationExperience}
+          educationList={this.state.educationList}
+          removeEducationExperience={this.removeEducationExperience}
+          schoolName={this.state.schoolName}
+          schoolCity={this.state.schoolCity}
+          subject={this.state.subject}
+          schoolFrom={this.state.schoolFrom}
+          schoolTo={this.state.schoolTo}
         />
         <WorkInfo
           defineWorkPosition={this.defineWorkPosition}

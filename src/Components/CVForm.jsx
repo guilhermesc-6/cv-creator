@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { v4 as uuid } from "uuid";
 import { ProfileInfo } from "./ProfileInfo";
 import { EducationInfo } from "./EducationInfo";
 import { WorkInfo } from "./WorkInfo";
@@ -22,6 +23,7 @@ export class CVForm extends Component {
       workCity: "",
       workFrom: "",
       workTo: "",
+      workExperiences: [],
     };
 
     this.defineFirstName = this.defineFirstName.bind(this);
@@ -38,6 +40,8 @@ export class CVForm extends Component {
     this.defineWorkCity = this.defineWorkCity.bind(this);
     this.defineWorkFrom = this.defineWorkFrom.bind(this);
     this.defineWorkTo = this.defineWorkTo.bind(this);
+    this.addWorkExperience = this.addWorkExperience.bind(this);
+    this.removeWorkExperience = this.removeWorkExperience.bind(this);
   }
 
   defineFirstName(e) {
@@ -112,6 +116,35 @@ export class CVForm extends Component {
     });
   }
 
+  //add a new object of work information in the workExperiences array
+  addWorkExperience() {
+    this.setState({
+      workExperiences: this.state.workExperiences.concat({
+        id: uuid(),
+        position: this.state.workPosition,
+        company: this.state.workCompany,
+        city: this.state.workCity,
+        from: this.state.workFrom,
+        to: this.state.workTo,
+      }),
+    });
+    this.setState({
+      workPosition: "",
+      workCompany: "",
+      workCity: "",
+      workFrom: "",
+      workTo: "",
+    });
+  }
+
+  //remove the object of work information in the workExperiences array
+  removeWorkExperience(id) {
+    const result = this.state.workExperiences.filter((work) => work.id !== id);
+    this.setState({
+      workExperiences: result,
+    });
+  }
+
   render() {
     return (
       <form>
@@ -134,6 +167,14 @@ export class CVForm extends Component {
           defineWorkCity={this.defineWorkCity}
           defineWorkFrom={this.defineWorkFrom}
           defineWorkTo={this.defineWorkTo}
+          workExperiences={this.state.workExperiences}
+          workPosition={this.state.workPosition}
+          workCompany={this.state.workCompany}
+          workCity={this.state.workCity}
+          workFrom={this.state.workFrom}
+          workTo={this.state.workTo}
+          addWorkExperience={this.addWorkExperience}
+          removeWorkExperience={this.removeWorkExperience}
         />
         <div className="button-div">
           <button type="submit">Create</button>

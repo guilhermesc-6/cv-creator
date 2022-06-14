@@ -45,6 +45,7 @@ export class CVForm extends Component {
     this.removeWorkExperience = this.removeWorkExperience.bind(this);
     this.addEducationExperience = this.addEducationExperience.bind(this);
     this.removeEducationExperience = this.removeEducationExperience.bind(this);
+    this.resetForm = this.resetForm.bind(this);
   }
 
   defineFirstName(e) {
@@ -177,48 +178,107 @@ export class CVForm extends Component {
     });
   }
 
+  // Reset all the fields in the form
+  resetForm() {
+    this.setState({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      schoolName: "",
+      schoolCity: "",
+      subject: "",
+      schoolFrom: "",
+      schoolTo: "",
+      workPosition: "",
+      workCompany: "",
+      workCity: "",
+      workFrom: "",
+      workTo: "",
+      workExperiences: [],
+      educationList: [],
+    });
+  }
+
   render() {
     return (
       <form>
-        <ProfileInfo
-          defineFirstName={this.defineFirstName}
-          defineLastName={this.defineLastName}
-          defineEmail={this.defineEmail}
-          definePhone={this.definePhone}
-        />
-        <EducationInfo
-          defineSchoolName={this.defineSchoolName}
-          defineSchoolCity={this.defineSchoolCity}
-          defineSubject={this.defineSubject}
-          defineSchoolFrom={this.defineSchoolFrom}
-          defineSchoolTo={this.defineSchoolTo}
-          addEducationExperience={this.addEducationExperience}
-          educationList={this.state.educationList}
-          removeEducationExperience={this.removeEducationExperience}
-          schoolName={this.state.schoolName}
-          schoolCity={this.state.schoolCity}
-          subject={this.state.subject}
-          schoolFrom={this.state.schoolFrom}
-          schoolTo={this.state.schoolTo}
-        />
-        <WorkInfo
-          defineWorkPosition={this.defineWorkPosition}
-          defineWorkCompany={this.defineWorkCompany}
-          defineWorkCity={this.defineWorkCity}
-          defineWorkFrom={this.defineWorkFrom}
-          defineWorkTo={this.defineWorkTo}
-          workExperiences={this.state.workExperiences}
-          workPosition={this.state.workPosition}
-          workCompany={this.state.workCompany}
-          workCity={this.state.workCity}
-          workFrom={this.state.workFrom}
-          workTo={this.state.workTo}
-          addWorkExperience={this.addWorkExperience}
-          removeWorkExperience={this.removeWorkExperience}
-        />
+        <div className="form">
+          <ProfileInfo
+            defineFirstName={this.defineFirstName}
+            defineLastName={this.defineLastName}
+            defineEmail={this.defineEmail}
+            definePhone={this.definePhone}
+            firstName={this.state.firstName}
+            lastName={this.state.lastName}
+            email={this.state.email}
+            phone={this.state.phone}
+          />
+          <EducationInfo
+            defineSchoolName={this.defineSchoolName}
+            defineSchoolCity={this.defineSchoolCity}
+            defineSubject={this.defineSubject}
+            defineSchoolFrom={this.defineSchoolFrom}
+            defineSchoolTo={this.defineSchoolTo}
+            addEducationExperience={this.addEducationExperience}
+            educationList={this.state.educationList}
+            removeEducationExperience={this.removeEducationExperience}
+            schoolName={this.state.schoolName}
+            schoolCity={this.state.schoolCity}
+            subject={this.state.subject}
+            schoolFrom={this.state.schoolFrom}
+            schoolTo={this.state.schoolTo}
+          />
+          <WorkInfo
+            defineWorkPosition={this.defineWorkPosition}
+            defineWorkCompany={this.defineWorkCompany}
+            defineWorkCity={this.defineWorkCity}
+            defineWorkFrom={this.defineWorkFrom}
+            defineWorkTo={this.defineWorkTo}
+            workExperiences={this.state.workExperiences}
+            workPosition={this.state.workPosition}
+            workCompany={this.state.workCompany}
+            workCity={this.state.workCity}
+            workFrom={this.state.workFrom}
+            workTo={this.state.workTo}
+            addWorkExperience={this.addWorkExperience}
+            removeWorkExperience={this.removeWorkExperience}
+          />
+        </div>
         <div className="button-div">
-          <button type="submit">Create</button>
-          <button>Reset</button>
+          <button type="submit" className="create">
+            Create
+            <div className="icon">
+              <svg
+                height="24"
+                width="24"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+          </button>
+          <button className="reset" type="button" onClick={this.resetForm}>
+            Reset
+            <div className="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                viewBox="0 0 30 25"
+              >
+                <path
+                  d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+          </button>
         </div>
       </form>
     );

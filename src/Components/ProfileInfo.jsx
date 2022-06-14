@@ -6,8 +6,16 @@ export class ProfileInfo extends Component {
   }
 
   render() {
-    const { defineFirstName, defineLastName, defineEmail, definePhone } =
-      this.props;
+    const {
+      defineFirstName,
+      defineLastName,
+      defineEmail,
+      definePhone,
+      firstName,
+      lastName,
+      email,
+      phone,
+    } = this.props;
     return (
       <fieldset>
         <legend>Personal information</legend>
@@ -15,6 +23,7 @@ export class ProfileInfo extends Component {
         <input
           type="text"
           id="name"
+          value={firstName}
           placeholder="Enter your first name"
           onChange={defineFirstName}
         />
@@ -22,6 +31,7 @@ export class ProfileInfo extends Component {
         <input
           type="text"
           id="last-name"
+          value={lastName}
           placeholder="Enter your last name"
           onChange={defineLastName}
         />
@@ -29,6 +39,7 @@ export class ProfileInfo extends Component {
         <input
           type="email"
           id="email"
+          value={email}
           placeholder="email@email.com"
           onChange={defineEmail}
         />
@@ -36,6 +47,7 @@ export class ProfileInfo extends Component {
         <input
           type="text"
           id="phone"
+          value={phone}
           placeholder="(00) 000000000"
           onChange={definePhone}
         />

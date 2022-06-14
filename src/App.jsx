@@ -48,6 +48,8 @@ class App extends Component {
     this.addEducationExperience = this.addEducationExperience.bind(this);
     this.removeEducationExperience = this.removeEducationExperience.bind(this);
     this.resetForm = this.resetForm.bind(this);
+    this.createCv = this.createCv.bind(this);
+    this.downloadCv = this.downloadCv.bind(this);
   }
 
   defineFirstName(e) {
@@ -199,7 +201,19 @@ class App extends Component {
       workTo: "",
       workExperiences: [],
       educationList: [],
+      generateCv: false,
     });
+  }
+
+  createCv(e) {
+    e.preventDefault();
+    this.setState({
+      generateCv: true,
+    });
+  }
+
+  downloadCv() {
+    window.print();
   }
 
   render() {
@@ -228,6 +242,8 @@ class App extends Component {
             addWorkExperience={this.addWorkExperience}
             removeWorkExperience={this.removeWorkExperience}
             resetForm={this.resetForm}
+            createCv={this.createCv}
+            downloadCv={this.downloadCv}
           />
           <Viewer states={this.state} />
         </div>

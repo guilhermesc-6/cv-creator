@@ -22,6 +22,7 @@ export class Viewer extends Component {
               <div className="infos">
                 <div className="educations">
                   <h1>Education.</h1>
+
                   {states.educationList.length > 0
                     ? states.educationList.map((education) => {
                         return (

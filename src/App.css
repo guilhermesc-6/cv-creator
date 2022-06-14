@@ -151,6 +151,10 @@ input[type="button"]:hover {
   flex-direction: column;
   gap: 10px;
   align-items: center;
+  align-self: flex-start;
+  position: sticky;
+  top: 20px;
+  margin-top: 20px;
 }
 /* From uiverse.io by @adamgiebl */
 .create,
@@ -205,6 +209,73 @@ input[type="button"]:hover {
 .reset:hover .icon svg {
   transform: translateX(0.1em);
 }
+/* From uiverse.io by @barisdogansutcu */
+.download-button {
+  position: relative;
+  border: none;
+  color: white;
+  border-radius: 2rem;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.download-button .docs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 10px;
+  border-radius: 20px;
+  z-index: 1;
+  background-color: #053a56;
+  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.download-button:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.download {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 90%;
+  margin: 0 auto;
+  z-index: -1;
+  border-radius: 20px;
+  transform: translateY(0%);
+  background-color: #01e056;
+  border: solid 1px #01e0572d;
+  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.download-button:hover .download {
+  transform: translateY(100%);
+}
+
+.download svg polyline,
+.download svg line {
+  animation: docs 1s infinite;
+}
+
+@keyframes docs {
+  0% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(-15%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
 
 /* Viewer */
 .viewer {
@@ -231,15 +302,22 @@ input[type="button"]:hover {
 
 .infos {
   margin-top: 2rem;
+  width: 100%;
 }
 .infos h1 {
   border-bottom: 1px solid black;
 }
 .educations,
 .works {
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
+  gap: 20px;
+}
+.education-info,
+.work-info {
+  width: 290px;
 }
 
 /* Print */
@@ -249,5 +327,21 @@ input[type="button"]:hover {
   }
   form {
     display: none;
+  }
+  .viewer {
+    width: 100%;
+  }
+  .profile {
+    border-bottom: 2px solid #000;
+  }
+  .infos h1 {
+    border-bottom: 1px solid black;
+    text-align: center;
+  }
+
+  .educations > div,
+  .works > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   }
 }

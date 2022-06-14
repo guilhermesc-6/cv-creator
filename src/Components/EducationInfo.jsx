@@ -80,8 +80,8 @@ export class EducationInfo extends Component {
                       className="noselect"
                       onClick={() => removeEducationExperience(education.id)}
                     >
-                      <span class="text">Delete</span>
-                      <span class="icon">
+                      <span className="text">Delete</span>
+                      <span className="icon">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"

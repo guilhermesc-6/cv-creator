@@ -235,8 +235,8 @@ input[type="button"]:hover {
 .infos h1 {
   border-bottom: 1px solid black;
 }
-.education-list,
-.work-list {
+.educations,
+.works {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;

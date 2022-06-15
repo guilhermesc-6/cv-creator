@@ -65,6 +65,18 @@ input[type="button"]:hover {
   background-color: #053a56;
   color: #fff;
 }
+textarea {
+  border: none;
+  border-radius: 0 20px;
+  padding: 0.5rem 1rem;
+  outline: none;
+  resize: vertical;
+  height: 80px;
+  min-height: 80px;
+}
+textarea:focus {
+  outline: 1px solid #1f5775;
+}
 
 .work-list,
 .education-list {
@@ -334,8 +346,18 @@ input[type="button"]:hover {
   .profile {
     border-bottom: 2px solid #000;
   }
-  .infos h1 {
-    border-bottom: 1px solid black;
+  span {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+  .profile-text {
+    text-align: center;
+    font-size: 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .educations h1,
+  .works h1 {
+    border-bottom: 2px solid black;
     text-align: center;
   }
 
